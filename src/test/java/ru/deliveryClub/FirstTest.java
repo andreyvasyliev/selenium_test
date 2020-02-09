@@ -34,7 +34,7 @@ public class FirstTest extends WebDriverSettings{
 
         email.sendKeys("bob@yopmail.com");
 
-        Thread.sleep(3000);
+        Thread.sleep(2500);
 
     }
 
