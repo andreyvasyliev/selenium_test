@@ -4,14 +4,21 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageobjects.HomePage;
+import pageobjects.LoginPage;
 
 public class FirstTest extends WebDriverSettings{
 
 
     @Test
     public void firstTest() {
+
+        HomePage homePage = new HomePage(driver);
+
+        homePage.open();
 
         String title = driver.getTitle();
 
@@ -22,20 +29,17 @@ public class FirstTest extends WebDriverSettings{
     @Test
     public void login() throws InterruptedException{
 
-        WebElement navbar = driver.findElementByClassName("navbar");
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 
-        navbar.findElement(By.cssSelector("[href=\"/login\"]")).click();
+        homePage.open()
+                .clickLoginButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type=\"email\"]")));
-
-        WebElement email = driver.findElementByCssSelector("[type=\"email\"]");
-
-        email.sendKeys("bob@yopmail.com");
+        loginPage.inputEmail("bob@yopmail.com");
 
         Thread.sleep(2500);
 
     }
+
 
 }

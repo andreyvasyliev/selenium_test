@@ -14,7 +14,7 @@ public class WebDriverSettings {
         System.setProperty("webdriver.chrome.driver", "/Users/andreivasyliev/Downloads/chromedriver");
         driver = new ChromeDriver();
 
-        driver.get("https://djinni.co/");
+//        driver.get("https://djinni.co/");
 
     }
 
